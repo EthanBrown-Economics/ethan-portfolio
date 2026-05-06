@@ -10,7 +10,7 @@ import { projects } from "../data/projects";
 const LINKEDIN_URL = "https://www.linkedin.com/in/ethanbrown04/";
 const GITHUB_URL = "https://github.com/ebrown04";
 const RESUME_URL = "/resume.pdf";
-const EMAIL = "Ethan.Brown@vikings.berry.edu";
+const EMAIL = "Ebrown0715@gmail.com";
 
 function LogoBox({ src, alt }) {
   return (
@@ -136,13 +136,11 @@ export default function Home() {
           <SectionLabel>Portfolio / Applied Analytics / Economics</SectionLabel>
 
           <h1 className="mt-6 max-w-5xl text-5xl font-semibold leading-[0.95] tracking-tight md:text-7xl">
-            Data projects built from real systems, messy datasets, and practical questions.
+            Using data to study economic behavior, policy-analysis, and business strategy.
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-600">
-            I study economics, data analytics, and applied machine learning with
-            a focus on empirical research, data engineering, business analytics,
-            and policy-relevant analysis.
+            I am an Economics and Data Analytics undergraduate at Berry College. I am passionate about using data and economic analysis to understand market dynamics, inform public policy, and drive business strategy. I have experience with Python, R, SQL, Power BI, and applied econometric methods through coursework, research, and internships. I am particularly interested in empirical applied microeconomics, including how market structure, technology, and public policy shape prices, competition, and welfare.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-3">
