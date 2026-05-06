@@ -32,17 +32,6 @@ function SectionLabel({ children, light = false }) {
   );
 }
 
-function StatCard({ value, label }) {
-  return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
-      <p className="text-3xl font-semibold tracking-tight">{value}</p>
-      <p className="mt-2 text-xs uppercase tracking-[0.2em] text-zinc-500">
-        {label}
-      </p>
-    </div>
-  );
-}
-
 function TimelineItem({ logo, logoAlt, title, subtitle, date, bullets }) {
   return (
     <div className="group grid gap-6 border-t border-zinc-200 py-8 md:grid-cols-[0.35fr_1fr]">
@@ -81,7 +70,7 @@ function ProjectCard({ project, index }) {
   return (
     <Link
       to={`/projects/${project.slug}`}
-      className="group flex min-h-[340px] flex-col justify-between rounded-[2rem] border border-zinc-200 bg-zinc-50 p-7 transition duration-300 hover:-translate-y-1 hover:border-zinc-950 hover:bg-white hover:shadow-xl"
+      className="group flex min-h-[280px] flex-col justify-between rounded-[2rem] border border-zinc-200 bg-zinc-50 p-7 transition duration-300 hover:-translate-y-1 hover:border-zinc-950 hover:bg-white hover:shadow-xl"
     >
       <div>
         <div className="flex items-center justify-between">
@@ -91,7 +80,7 @@ function ProjectCard({ project, index }) {
           </p>
         </div>
 
-        <p className="mt-14 text-xs font-medium uppercase tracking-[0.25em] text-zinc-500">
+        <p className="mt-10 text-xs font-medium uppercase tracking-[0.25em] text-zinc-500">
           {project.category}
         </p>
 
@@ -114,16 +103,30 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <a href="/" className="group">
             <p className="text-sm font-semibold tracking-tight">Ethan Brown</p>
-            <p className="text-xs text-zinc-500">Economics · Data Analytics · ML</p>
+            <p className="text-xs text-zinc-500">
+              Economics · Data Analytics · ML
+            </p>
           </a>
 
           <div className="hidden gap-7 text-sm text-zinc-600 md:flex">
-            <a href="#projects" className="hover:text-zinc-950">Projects</a>
-            <a href="#education" className="hover:text-zinc-950">Education</a>
-            <a href="#experience" className="hover:text-zinc-950">Experience</a>
-            <a href="#skills" className="hover:text-zinc-950">Skills</a>
-            <Link to="/blog" className="hover:text-zinc-950">Blog</Link>
-            <a href="#contact" className="hover:text-zinc-950">Contact</a>
+            <a href="#projects" className="hover:text-zinc-950">
+              Projects
+            </a>
+            <a href="#education" className="hover:text-zinc-950">
+              Education
+            </a>
+            <a href="#experience" className="hover:text-zinc-950">
+              Experience
+            </a>
+            <a href="#skills" className="hover:text-zinc-950">
+              Skills
+            </a>
+            <Link to="/blog" className="hover:text-zinc-950">
+              Blog
+            </Link>
+            <a href="#contact" className="hover:text-zinc-950">
+              Contact
+            </a>
           </div>
         </div>
       </nav>
@@ -196,20 +199,18 @@ export default function Home() {
               className="h-[420px] w-full rounded-[1.75rem] object-cover"
             />
 
-            <div className="grid grid-cols-3 gap-3 pt-3">
-              <div className="rounded-2xl bg-white p-4">
-                <p className="text-xl font-semibold">3.80</p>
-                <p className="mt-1 text-xs text-zinc-500">GPA</p>
+            <div className="flex items-center justify-between gap-4 pt-4">
+              <div>
+                <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">
+                  Academic profile
+                </p>
+                <p className="mt-1 text-sm text-zinc-600">
+                  Economics + Data Analytics
+                </p>
               </div>
 
-              <div className="rounded-2xl bg-white p-4">
-                <p className="text-xl font-semibold">$500K+</p>
-                <p className="mt-1 text-xs text-zinc-500">Revenue</p>
-              </div>
-
-              <div className="rounded-2xl bg-white p-4">
-                <p className="text-xl font-semibold">15+</p>
-                <p className="mt-1 text-xs text-zinc-500">Staff</p>
+              <div className="rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-950">
+                3.80 GPA
               </div>
             </div>
           </div>
@@ -217,10 +218,10 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="rounded-[2.25rem] bg-zinc-950 p-8 text-white md:p-12">
-          <SectionLabel light>Research direction</SectionLabel>
+        <div className="rounded-[2.25rem] border border-zinc-200 bg-zinc-50 p-8 md:p-12">
+          <SectionLabel>Research direction</SectionLabel>
 
-          <p className="mt-5 max-w-5xl text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
+          <p className="mt-5 max-w-5xl text-3xl font-semibold leading-tight tracking-tight text-zinc-950 md:text-5xl">
             Empirical applied microeconomics, with interest in how market
             structure, technology, and public policy shape prices, competition,
             and welfare.
