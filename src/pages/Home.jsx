@@ -211,7 +211,7 @@ export default function Home() {
               </div>
 
               <div className="rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-950">
-                3.80 GPA
+                3.82 GPA
               </div>
             </div>
           </div>
