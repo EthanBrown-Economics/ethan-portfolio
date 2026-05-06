@@ -121,6 +121,9 @@ export default function Home() {
             <a href="#skills" className="hover:text-zinc-950">
               Skills
             </a>
+            <Link to="/playground" className="hover:text-zinc-950">
+              Playground
+            </Link>
             <Link to="/blog" className="hover:text-zinc-950">
               Blog
             </Link>
