@@ -1,4 +1,6 @@
 import { Link, useParams } from "react-router-dom";
+import SiteHeader from "../components/SiteHeader";
+import Reveal from "../components/Reveal";
 import { blogPosts } from "../data/blogPosts";
 
 function FeaturedImage({ post }) {
@@ -21,7 +23,9 @@ function FeaturedImage({ post }) {
 
 export default function BlogPost() {
   const { slug } = useParams();
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = blogPosts.find(
+    (p) => p.slug === slug && p.status === "Published"
+  );
 
   if (!post) {
     return (
@@ -41,23 +45,13 @@ export default function BlogPost() {
 
   return (
     <main className="min-h-screen bg-white text-zinc-950">
-      <nav className="sticky top-0 z-50 border-b border-zinc-200 bg-white/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-          <div>
-            <p className="text-sm font-semibold tracking-tight">Ethan Brown</p>
-            <p className="text-xs text-zinc-500">Article</p>
-          </div>
-
-          <div className="flex items-center gap-6 text-sm text-zinc-600">
-            <Link to="/blog" className="hover:text-zinc-950">
-              Blog
-            </Link>
-            <Link to="/" className="hover:text-zinc-950">
-              Portfolio
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteHeader
+        subtitle="Article"
+        links={[
+          { label: "Blog", to: "/blog" },
+          { label: "Portfolio", to: "/" },
+        ]}
+      />
 
       <article className="mx-auto max-w-5xl px-6 pb-20 pt-14">
         <div className="max-w-3xl">
@@ -78,13 +72,15 @@ export default function BlogPost() {
           </div>
         </div>
 
-        <div className="mt-10">
+        <Reveal className="mt-10">
           <FeaturedImage post={post} />
-        </div>
+        </Reveal>
 
         <div className="mt-12 max-w-3xl space-y-6 text-lg leading-8 text-zinc-700">
           {post.content.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
+            <Reveal key={index} delay={index * 0.05} y={12}>
+              <p>{paragraph}</p>
+            </Reveal>
           ))}
         </div>
 

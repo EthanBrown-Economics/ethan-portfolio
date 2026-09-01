@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
+import SiteHeader from "../components/SiteHeader";
+import Reveal from "../components/Reveal";
 import { blogPosts } from "../data/blogPosts";
+
+const publishedPosts = blogPosts.filter((post) => post.status === "Published");
 
 function ArticleImage({ post }) {
   return (
@@ -22,20 +26,10 @@ function ArticleImage({ post }) {
 export default function Blog() {
   return (
     <main className="min-h-screen bg-white text-zinc-950">
-      <nav className="sticky top-0 z-50 border-b border-zinc-200 bg-white/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-          <div>
-            <p className="text-sm font-semibold tracking-tight">Ethan Brown</p>
-            <p className="text-xs text-zinc-500">Writing / Build Log</p>
-          </div>
-
-          <div className="flex items-center gap-6 text-sm text-zinc-600">
-            <Link to="/" className="hover:text-zinc-950">
-              ← Back to portfolio
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteHeader
+        subtitle="Writing / Build Log"
+        links={[{ label: "← Back to portfolio", to: "/" }]}
+      />
 
       <section className="mx-auto max-w-7xl px-6 pb-20 pt-16">
         <div className="max-w-3xl">
@@ -54,40 +48,39 @@ export default function Blog() {
         </div>
 
         <div className="mt-14 grid gap-8 md:grid-cols-2">
-          {blogPosts.map((post) => (
-            <article
-              key={post.slug}
-              className="group overflow-hidden rounded-[2rem] border border-zinc-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-            >
-              <ArticleImage post={post} />
+          {publishedPosts.map((post, index) => (
+            <Reveal key={post.slug} delay={index * 0.08} className="h-full">
+              <article className="group h-full overflow-hidden rounded-[2rem] border border-zinc-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <ArticleImage post={post} />
 
-              <div className="p-6">
-                <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-zinc-500">
-                  <span>{post.category}</span>
-                  <span>•</span>
-                  <span>{post.date}</span>
-                  <span>•</span>
-                  <span>{post.readTime}</span>
+                <div className="p-6">
+                  <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-zinc-500">
+                    <span>{post.category}</span>
+                    <span>•</span>
+                    <span>{post.date}</span>
+                    <span>•</span>
+                    <span>{post.readTime}</span>
+                  </div>
+
+                  <h2 className="mt-4 text-2xl font-semibold tracking-tight">
+                    {post.title}
+                  </h2>
+
+                  <p className="mt-4 text-sm leading-7 text-zinc-600">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="mt-6">
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="text-sm font-medium text-zinc-950 underline underline-offset-4"
+                    >
+                      Read article
+                    </Link>
+                  </div>
                 </div>
-
-                <h2 className="mt-4 text-2xl font-semibold tracking-tight">
-                  {post.title}
-                </h2>
-
-                <p className="mt-4 text-sm leading-7 text-zinc-600">
-                  {post.excerpt}
-                </p>
-
-                <div className="mt-6">
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="text-sm font-medium text-zinc-950 underline underline-offset-4"
-                  >
-                    Read article
-                  </Link>
-                </div>
-              </div>
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
