@@ -385,7 +385,7 @@ export default function Home() {
                 logo: ymcaLogo,
                 logoAlt: "YMCA logo",
                 title: "YMCA",
-                subtitle: "Analytics Intern",
+                subtitle: "Analytics Intern · Atlanta, Georgia",
                 date: "May 2026 – Aug. 2026",
                 bullets: [
                   "Built Power BI dashboards for organizational reporting, developing hands-on proficiency in DAX and Power Query.",
