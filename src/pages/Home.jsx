@@ -245,27 +245,6 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
-
-        <Reveal delay={0.2} className="relative mt-16 grid grid-cols-2 gap-8 border-t border-zinc-800 pt-10 sm:grid-cols-4">
-          {[
-            { value: 100, decimals: 0, prefix: "", suffix: "K+", label: "Airbnb listings analyzed" },
-            { value: 90, decimals: 0, prefix: "", suffix: "", label: "years of federal trade records processed" },
-            { value: 500, decimals: 0, prefix: "$", suffix: "K+", label: "in annual revenue managed" },
-            { value: 6, decimals: 0, prefix: "", suffix: "", label: "ML models benchmarked" },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <p className="text-3xl font-semibold tracking-tight text-orange-400 sm:text-4xl">
-                <AnimatedNumber
-                  value={stat.value}
-                  decimals={stat.decimals}
-                  prefix={stat.prefix}
-                  suffix={stat.suffix}
-                />
-              </p>
-              <p className="mt-2 text-xs leading-5 text-zinc-400">{stat.label}</p>
-            </div>
-          ))}
-        </Reveal>
         </SpotlightArea>
       </section>
 
