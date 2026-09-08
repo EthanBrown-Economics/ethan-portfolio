@@ -6,6 +6,7 @@ import Reveal from "../components/Reveal";
 import AnimatedNumber from "../components/AnimatedNumber";
 import HeroMotif from "../components/HeroMotif";
 import SpotlightArea from "../components/SpotlightArea";
+import { withBase } from "../lib/paths";
 import headshot from "../assets/EthanHeadshot.jpg";
 import berryLogo from "../assets/berry-logo.jpg";
 import utkLogo from "../assets/UTK-logo.png";
@@ -19,7 +20,7 @@ const publishedProjects = projects.filter((project) => project.published);
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/ethanbrown04/";
 const GITHUB_URL = "https://github.com/EthanBrown-Economics";
-const RESUME_URL = "/resume.pdf";
+const RESUME_URL = withBase("/resume.pdf");
 const EMAIL = "Ebrown0715@gmail.com";
 
 const pdfViewerUrl = (src, title) =>

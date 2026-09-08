@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import SiteHeader from "../components/SiteHeader";
 import Reveal from "../components/Reveal";
+import { withBase } from "../lib/paths";
 import { blogPosts } from "../data/blogPosts";
 
 const publishedPosts = blogPosts.filter((post) => post.status === "Published");
@@ -10,7 +11,7 @@ function ArticleImage({ post }) {
     <div className="overflow-hidden rounded-[1.5rem] border border-zinc-200 bg-zinc-100">
       {post.image ? (
         <img
-          src={post.image}
+          src={withBase(post.image)}
           alt={post.title}
           className="h-56 w-full object-cover"
         />

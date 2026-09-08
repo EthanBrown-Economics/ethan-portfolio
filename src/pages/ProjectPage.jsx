@@ -4,10 +4,12 @@ import { Download, ExternalLink } from "lucide-react";
 import SiteHeader from "../components/SiteHeader";
 import Reveal from "../components/Reveal";
 import AnimatedNumber from "../components/AnimatedNumber";
+import { withBase } from "../lib/paths";
 import { projects } from "../data/projects";
 
 const isLiveLink = (value) => Boolean(value) && value !== "#";
 const isLocalFile = (value) => isLiveLink(value) && value.startsWith("/");
+const resolveLocal = (value) => (isLocalFile(value) ? withBase(value) : value);
 
 function ModelComparisonChart({ data }) {
   const max = Math.max(...data.map((d) => d.r2));
@@ -203,7 +205,7 @@ export default function ProjectPage() {
           <Reveal className="mt-12 grid gap-5 md:grid-cols-2">
             {isLiveLink(project.pdf) && (
               <Link
-                to={`/pdf?src=${encodeURIComponent(project.pdf)}&title=${encodeURIComponent(`${project.title} — Report`)}`}
+                to={`/pdf?src=${encodeURIComponent(resolveLocal(project.pdf))}&title=${encodeURIComponent(`${project.title} — Report`)}`}
                 className="rounded-3xl border border-zinc-200 bg-zinc-50 p-6 transition hover:border-zinc-400"
               >
                 <h2 className="text-xl font-semibold">Project PDF</h2>
@@ -229,7 +231,7 @@ export default function ProjectPage() {
 
             {isLiveLink(project.code) && (
               <a
-                href={project.code}
+                href={resolveLocal(project.code)}
                 {...(isLocalFile(project.code)
                   ? { download: project.code.split("/").pop() }
                   : { target: "_blank", rel: "noreferrer" })}
@@ -253,7 +255,7 @@ export default function ProjectPage() {
 
             {isLiveLink(project.data) && (
               <a
-                href={project.data}
+                href={resolveLocal(project.data)}
                 {...(isLocalFile(project.data)
                   ? { download: project.data.split("/").pop() }
                   : { target: "_blank", rel: "noreferrer" })}
@@ -288,7 +290,7 @@ export default function ProjectPage() {
 
             <div className="mt-6 overflow-hidden rounded-3xl border border-zinc-200 shadow-sm">
               <iframe
-                src={project.map}
+                src={resolveLocal(project.map)}
                 className="h-[75vh] min-h-[600px] w-full"
                 title="Airbnb Map"
               />

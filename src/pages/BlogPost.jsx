@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import SiteHeader from "../components/SiteHeader";
 import Reveal from "../components/Reveal";
+import { withBase } from "../lib/paths";
 import { blogPosts } from "../data/blogPosts";
 
 function FeaturedImage({ post }) {
@@ -8,7 +9,7 @@ function FeaturedImage({ post }) {
     <div className="overflow-hidden rounded-[2rem] border border-zinc-200 bg-zinc-100">
       {post.image ? (
         <img
-          src={post.image}
+          src={withBase(post.image)}
           alt={post.title}
           className="h-[360px] w-full object-cover"
         />
